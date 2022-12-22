@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             </div>    
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                 <label>Mot de passe</label>
-                <input type="password" name="password" autocomplete="off" class="form-control">
+                <input type="text" name="password" autocomplete="off" class="form-control">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">

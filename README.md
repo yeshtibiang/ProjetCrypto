@@ -36,3 +36,13 @@ Il s'agit de voir comment à travers l'injection SQL un attaquant peut bypasser 
 ### explication
 
 - L'attaque de l'injection SQL se déroule dû à une mauvaise utilisation des requêtes SQL pour vérifier l'identité de l'utilisateur qui se connecte. Vu que notre requête SQL est la suivante: `SELECT * FROM users WHERE username = '$username' AND password = '$password'` et que l'on peut injecter du code SQL dans les variables `$username` et `$password`, on peut bypasser l'authentification en injectant le code suivant: `foo' or '1'='1`. Ce code va permettre de passer la vérification de l'identité de l'utilisateur. En effet, la requête SQL devient: `SELECT * FROM users WHERE username = 'foo' or '1'='1' AND password = 'foo' or '1'='1'`. La requête SQL va donc retourner tous les utilisateurs de la base de données car la condition `1=1` est toujours vraie.
+
+## Capture d'écran
+### Connexion normale
+![Capture d'écran](./images/bonmotdepasse.PNG)
+![Capture d'écran](./images/bonneconnection.PNG)
+
+### Injection SQL
+![Capture d'écran](./images/mauvaismotdepasse.PNG)
+![Capture d'écran](./images/mauvaisconnection.PNG)
+
